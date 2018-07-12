@@ -80,13 +80,16 @@ git branch -d dev
 # 合并分支时若冲突，需要先解决冲突才能进行合并
 # git会列出冲突的内容，需要手动改成你需要的样子，然后再提交
 
-#通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
+# 通常，合并分支时，如果可能，Git会用Fast forward模式，但这种模式下，删除分支后，会丢掉分支信息。
 # 强制禁用Fast forward模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
 git merge --no-ff -m "merge with no-ff" dev
 # 因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。
 
 # 现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：
 git checkout -b dev origin/dev
+
+# 查看远程库信息
+git remote -v
 
 # 你的小伙伴已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件作了修改，并试图推送：
 # 推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，
@@ -113,6 +116,44 @@ git push origin dev                       # 推送到远程分支
   如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
 
   这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+
+# 创建标签，切换到需要打标签的分支上，敲命令：
+git tag v1.0
+
+#查看所有标签：
+git tag
+
+# 标签默认是打在最新提交的commit上的，若要打在以前的修改的标签，需要找到历史提交的commit id：
+git log --pretty=oneline --abbrev-commit
+4ff71be (HEAD -> master, tag: v1.0, origin/master) conflict fixed
+7cc4c78 add txt 333333
+0876575 add txt 22222
+b6e7287 add readme.txt
+806b79d remove readme.md
+94bfc2c add all quest files
+
+git tag v0.9 0876575
+
+# 查看标签信息：
+git show v0.9
+
+# 还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字：
+git tag -a v0.1 -m "version 0.1 released" 1094adb
+
+# 如果标签打错了，也可以删除：
+git tag -d v0.1
+
+# 如果要推送某个标签到远程，使用命令git push origin <tagname>：
+git push origin v1.0
+
+#一次性推送全部尚未推送到远程的本地标签：
+git push origin --tags
+
+# 如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
+git tag -d v0.9
+# 然后，从远程删除。删除命令也是push，但是格式如下：
+git push origin :refs/tags/v0.9
 
 
 
