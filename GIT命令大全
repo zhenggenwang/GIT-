@@ -48,6 +48,18 @@ git checkout -- test.txt
 git rm test.txt
 git commit -m "remove test.txt"
 
+# 把一个已有的本地仓库与远程库之关联
+git remote add origin git@github.com:zhenggenwang/learngit.git          # 是远程库的名字
+
+#把本地仓库的内容推送到GitHub仓库：
+git push -u origin master
+# 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，
+# 还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+# 推送的简化命令：
+git push origin master
+
+
 
 
 
