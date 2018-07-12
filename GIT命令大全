@@ -1,4 +1,5 @@
-## 配置GIT账户和EMail地址：--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
+# 配置GIT账户和EMail地址：
+# --global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
 git config --global user.name "Your Name"
 git config --global user.email "email@example.com"
 
@@ -20,6 +21,24 @@ git diff 文件名.后缀
 # 提交修改的文件跟提交新文件命令是一样的：
 git add 文件名.后缀
 git commit -m "本次提交的说明"
+
+# 查年提交的历史记录：
+git log
+
+# 版本回退：上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100
+git reset --hard head^                                              # 回退到上一个版本
+git reset --hard b6f6a0cdbe00458afdd86d1bcd96de5f1fc3fd79           # 回退到指定的版本
+
+# 在命令窗口查看文本文件的内容：
+cat readme.txt
+
+# 查看你执行的每一次命令
+git reflog             # 可以查看某个版本的HEAD指针，从而回退到该版本
+
+
+
+
+
 
 
 
