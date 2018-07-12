@@ -49,7 +49,7 @@ git rm test.txt
 git commit -m "remove test.txt"
 
 # 把一个已有的本地仓库与远程库之关联
-git remote add origin git@github.com:zhenggenwang/learngit.git          # 是远程库的名字
+git remote add origin https://github.com/zhenggenwang/kunlunjue_Qest.git
 
 #把本地仓库的内容推送到GitHub仓库：
 git push -u origin master
@@ -59,6 +59,19 @@ git push -u origin master
 # 推送的简化命令：
 git push origin master
 
+# 从远程库克隆到本地：
+git clone https://github.com/zhenggenwang/kunlunjue_Qest.git
+
+# 创建并切换分支：
+git checkout -b dev              # 创建dev分支并把HEAD指针切换到dev分支上
+# 上一步操作相当于下面两条命令：
+git branch dev                   # 创建分支
+git checkout dev                 # 切换分支
+
+# 查看当前分支：
+git branch         # 该命令会列出所有分支，当前分支前面会标一个*号
+
+# 
 
 
 
