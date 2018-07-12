@@ -35,7 +35,18 @@ cat readme.txt
 # 查看你执行的每一次命令
 git reflog             # 可以查看某个版本的HEAD指针，从而回退到该版本
 
+# 让这个文件回到最近一次git commit或git add时的状态：
+git checkout -- readme.txt
 
+# 把暂存区的修改撤销掉（unstage），重新放回工作区：
+git reset HEAD readme.txt              # 使用此命令把修改重新放回工作区后，再用 git check 命令撤消更改
+
+# 把误删的工作区内的文件恢复到最新版本：
+git checkout -- test.txt
+
+# 从版本库中删除文件
+git rm test.txt
+git commit -m "remove test.txt"
 
 
 
