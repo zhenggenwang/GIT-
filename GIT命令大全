@@ -3,6 +3,9 @@
 git config --global user.name "Your Name"
 git config --global user.email "email@example.com"
 
+# 生成密钥：
+ssh-keygen -t rsa -C "395754193@qq.com"     # -C 后面的是为本密钥添加的说明
+
 # 创建版本库：
 git init
 
